@@ -1,41 +1,65 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import Image from 'next/image';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css';
-import { Main } from 'next/document';
+import SwiperCore,{Autoplay} from 'swiper'
 
-const inter = Inter({ subsets: ['latin'] })
+export default () => {
 
-export default function Home() {
+  SwiperCore.use([Autoplay])
   return (
-    <main>
-      <Swiper className={styles.main}
-    // install Swiper modules
+    <Swiper
     modules={[Navigation, Pagination, Scrollbar, A11y]}
-    spaceBetween={50}
-    slidesPerView={3}
+    slidesPerView={1}
+    autoplay={{
+      delay : 2000
+    }}
     navigation
     pagination={{ clickable: true }}
     scrollbar={{ draggable: true }}
     onSwiper={(swiper) => console.log(swiper)}
     onSlideChange={() => console.log('slide change')}
   >
-    <SwiperSlide>Slide 1</SwiperSlide>
-    <SwiperSlide>Slide 2</SwiperSlide>
-    <SwiperSlide>Slide 3</SwiperSlide>
-    <SwiperSlide>Slide 4</SwiperSlide>
-    <SwiperSlide>Slide 4</SwiperSlide>
-    <SwiperSlide>Slide 4</SwiperSlide>
-    <SwiperSlide>Slide 4</SwiperSlide>
-  </Swiper>
+    
+      <SwiperSlide>
+      <Image
+      src="/../public/images/banner.png"
+      alt="Picture of the author"
+      width={500}
+      height={500}
+    />
+      </SwiperSlide>
 
-    </main>
-  )
-}
+      <SwiperSlide>
+      <Image
+      src="/../public/images/desp.png"
+      alt="Picture of the author"
+      width={500}
+      height={500}
+    />
+      </SwiperSlide>
+
+      <SwiperSlide>
+      <Image
+      src="/../public/images/doc.png"
+      alt="Picture of the author"
+      width={500}
+      height={500}
+    />
+      </SwiperSlide>
+
+      <SwiperSlide>
+      <Image
+      src="/../public/images/flayer.png"
+      alt="Picture of the author"
+      width={500}
+      height={500}
+    />
+      </SwiperSlide>
+    </Swiper>
+  );
+};
